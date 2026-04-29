@@ -13,7 +13,7 @@ The management team needed to identify high-value customer segments and determin
 - **MySQL:** Created a relational database to execute complex business queries, including window functions for product ranking and CTEs for customer segmentation.
 - **Power BI:** Developed an interactive executive dashboard with dynamic slicers for Gender, Category, and Subscription Status.
 
-#Key Data Engineering (Python)
+# Key Data Engineering (Python)
 I utilized Python to transform raw data into "Analysis-Ready" formats:
 - **Missing Value Handling:** Imputed `Review Rating` gaps using category-based medians.
 - **Feature Engineering:** Segmented `Age` into four quartiles (`Young Adult` to `Senior`) to identify generational spending habits.
