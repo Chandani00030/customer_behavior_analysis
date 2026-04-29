@@ -1,31 +1,51 @@
-# Customer Shopping Behavior Analysis
-Data Analytics project showcasing customer shopping behavior analysis.
-An End-to-End Data Pipeline: Python (ETL) ➔ MySQL (Business Logic) ➔ Power BI (Interactive Dashboard)
+# Customer Shopping Behavior & Loyalty Analysis
+**A Data Analytics Pipeline: Python (ETL) ➔ MySQL (Analysis) ➔ Power BI (Visualization)**
 
-# Project Overview
-This project addresses a critical business need: understanding consumer shopping patterns to optimize marketing and inventory strategies. I built a full data pipeline to analyze **3,900+ customer records**, focusing on how demographics, subscription status, and shipping methods impact a **$233k+ revenue stream.**
+## Overview
+This project focuses on identifying trends in retail consumer behavior. By analyzing **3,900+ customer records**, I built a data pipeline to investigate how demographics, loyalty programs (subscriptions), and shipping preferences impact revenue. The final output is an interactive dashboard that provides actionable insights for marketing and inventory optimization.
 
-# Business Problem
-The management team needed to identify high-value customer segments and determine if current loyalty programs (Subscriptions) and incentives (Discounts) were effectively driving revenue and customer satisfaction.
+## Business Problem
+A retail company aims to improve customer engagement and marketing strategies. The analysis solves four key questions:
+1. Which demographic segments (Age/Gender) drive the most revenue?
+2. Does the Subscription program lead to significantly higher spending or satisfaction?
+3. How do discounts and shipping types influence the final purchase amount?
+4. What are the top-performing products within each category?
 
-# Tools & Technologies
-- **Python (Jupyter):** Performed data cleaning, handled missing review ratings via median imputation, and engineered new features like `age_group` and `purchase_frequency_days`.
-- **MySQL:** Created a relational database to execute complex business queries, including window functions for product ranking and CTEs for customer segmentation.
-- **Power BI:** Developed an interactive executive dashboard with dynamic slicers for Gender, Category, and Subscription Status.
+## Tools & Technologies
+- **Python (Jupyter):** Used for Data Cleaning (imputation), Feature Engineering (`age_group`, `frequency_mapping`), and Database Ingestion.
+- **MySQL:** Used for complex data aggregation, Customer Segmentation (CTEs), and Product Ranking (Window Functions).
+- **Power BI:** Developed an interactive dashboard with dynamic slicers for executive decision-making.
+- **Libraries:** Pandas, SQLAlchemy, PyMySQL.
 
-# Key Data Engineering (Python)
-I utilized Python to transform raw data into "Analysis-Ready" formats:
-- **Missing Value Handling:** Imputed `Review Rating` gaps using category-based medians.
-- **Feature Engineering:** Segmented `Age` into four quartiles (`Young Adult` to `Senior`) to identify generational spending habits.
-- **Database Integration:** Automated the transfer of cleaned DataFrames into MySQL using `SQLAlchemy`.
+## Data Pipeline (Python ETL)
+- **Data Cleaning:** Imputed missing `Review Rating` values using the **Category Median** to ensure analysis accuracy.
+- **Feature Engineering:** - Created `age_group` using quartiles (Young Adult, Adult, Middle-aged, Senior).
+    - Mapped qualitative frequency strings (e.g., "Fortnightly") to numerical `purchase_frequency_days`.
+    - Removed redundant features (Dropped `promo_code_used` as it mirrored `discount_applied`).
+- **Database Integration:** Exported the cleaned dataset directly into MySQL for a persistent relational storage layer.
 
-# Strategic Business Insights (MYSQL)
-- **The Loyalty Gap:** Only **27%** of customers are subscribed. However, repeat buyers (>5 purchases) show a significant volume in the non-subscriber pool, indicating a massive opportunity for conversion marketing.
-- **Category Leadership:** **Clothing** is the primary revenue driver, contributing over **$104k** to total sales.
-- **Discount Efficiency:** I identified the top 5 products (like Blouses and Sweaters) with the highest discount-to-purchase ratios to evaluate margin health.
-- **Logistics:** Average purchase amounts are nearly identical between **Standard** and **Express** shipping, suggesting customers are not currently incentivized to spend more for faster delivery.
+## Key Findings (SQL Analysis)
+- **Loyalty Segmentation:** Divided customers into 'New', 'Returning', and 'Loyal'. Found that many 'Loyal' customers (>10 purchases) remain unsubscribed.
+- **Shipping Trends:** Average spending is consistent across **Standard** and **Express** shipping, suggesting customers don't increase order size for faster delivery.
+- **Product Ranking:** Used `ROW_NUMBER()` to identify the top 3 items per category (e.g., Blouses lead in Clothing).
 
-# Business Recommendations
-1. **Targeted Conversion:** Launch a "Loyalty Upgrade" campaign specifically for the "Returning" and "Loyal" customer segments who are not yet subscribers.
-2. **Age-Based Bundling:** Since **Young Adults** are the top spenders, create "Summer/Winter Bundles" for the Clothing category tailored to this demographic.
-3. **Review-Driven Stocking:** Increase inventory for the top 5 highest-rated products to capitalize on high customer satisfaction.
+## Power BI Dashboard
+The dashboard provides a high-level view of retail health and granular control via button slicers:
+* **Core KPIs:** Real-time tracking of **Total Customers (3.9K)**, **Avg. Purchase ($59.76)**, and **Avg. Rating (3.75)**.
+* **Subscription Insight:** Donut chart revealing **73% of customers are non-subscribers**, highlighting a major conversion opportunity.
+* **Category Performance:** Comparison of **Revenue vs. Sales Volume** identifying Clothing as the primary revenue engine.
+* **Demographic Trends:** Visualized revenue distribution across age groups, identifying **Young Adults** as the highest contributors.
+* **Interactive Control:** Filterable by **Gender, Subscription Status, Category,** and **Shipping Type**.
+
+<img width="889" height="490" alt="Screenshot 2026-04-29 102816" src="https://github.com/user-attachments/assets/8aacd2c2-19c9-4069-b459-060230204c5f" />
+
+  
+## Final Recommendations
+1. **Targeted Loyalty Conversion:** Launch a campaign for the 73% non-subscribers who are in the 'Loyal' segment.
+2. **Age-Based Bundling:** Create specific marketing bundles for **Young Adults**, the top spending demographic.
+3. **Inventory Focus:** Increase stock for high-rated items like **Blouses** and **Jewelry** which show the highest customer satisfaction.
+
+## How to Run
+1. Run `Customer_Shopping_Behavior_Analysis.ipynb` to clean the data and load it to MySQL.
+2. Execute the queries in `customer.sql` to generate insights.
+3. Open `Customer_Behavior_Analysis.pbix` to view the visualizations.
