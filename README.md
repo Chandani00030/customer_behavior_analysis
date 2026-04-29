@@ -1,4 +1,4 @@
-# Customer Shopping Behavior & Loyalty Analysis
+# Customer Shopping Behavior Analysis
 **A Data Analytics Pipeline: Python (ETL) ➔ MySQL (Analysis) ➔ Power BI (Visualization)**
 
 ## Overview
