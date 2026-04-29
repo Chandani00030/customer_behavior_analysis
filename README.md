@@ -1,7 +1,5 @@
-# customer_behavior_analysis
-Data Analytics project showcasing customer behavior analysis using python,mysql,power bi
-
 # Customer Shopping Behavior Analysis
+Data Analytics project showcasing customer shopping behavior analysis.
 An End-to-End Data Pipeline: Python (ETL) ➔ MySQL (Business Logic) ➔ Power BI (Interactive Dashboard)
 
 # Project Overview
